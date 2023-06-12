@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Organization List</title>
+    <title>Organization Names</title>
 </head>
 <body>
-    <h1>Organization List</h1>
+    <h1>Organizations List</h1>
     <ul>
         {% for organization in organizations %}
             <li>
@@ -14,7 +14,15 @@
                 <!-- <p>{{ organization.location }}</p>
                 <p>{{ organization.phone_number }}</p>
                 <p>{{ organization.website }}</p>
-                <p>{{ organization.stuff_number}}</p> -->
+                <p>{{ organization.stuff_number}}</p>
+                <p>{{ organization.address }}</p>
+                <p>{{ organization.industry }}</p>
+                <p>{{ organization.is_nonprofit }}</p>
+                <p>{{ organization.established_date }}</p>
+                <p>{{ organization.social_media_facebook }}</p>
+                <p>{{ organization.social_media_instagram }}</p>
+                <p>{{ organization.social_media_linkedin }}</p>
+                <p>{{ organization.social_media_twitter }}</p> -->
             </li>
         {% empty %}
             <li>No organizations found.</li>
