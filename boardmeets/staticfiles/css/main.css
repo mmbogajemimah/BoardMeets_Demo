@@ -1,0 +1,37 @@
+/* NAVBAR */
+/* .navbar>.container-fluid {
+    justify-content: flex-start!important;
+} */
+.navbar-color{
+    background-color: #201547!important;
+}
+
+.navbar-brand {
+    color: white!important;
+    text-align: center;
+}
+
+/* Navbar image */
+.logo-image{
+    width: 90px;
+}
+
+/* CARDS */
+/* Changing left and top color of 1st and 2nd row */
+.card-color {
+    width: 3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.card-top-color {
+    height: 3px;
+}
+
+/* FOOTER */
+.home-footer {
+    background-color: #201547;
+}
+  

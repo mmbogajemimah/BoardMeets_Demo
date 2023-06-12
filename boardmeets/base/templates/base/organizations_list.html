@@ -1,0 +1,24 @@
+<!-- organizations_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Organization List</title>
+</head>
+<body>
+    <h1>Organization List</h1>
+    <ul>
+        {% for organization in organizations %}
+            <li>
+                <h3>{{ organization.organization_name }}</h3>
+                <!-- <p>{{ organization.location }}</p>
+                <p>{{ organization.phone_number }}</p>
+                <p>{{ organization.website }}</p>
+                <p>{{ organization.stuff_number}}</p> -->
+            </li>
+        {% empty %}
+            <li>No organizations found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
