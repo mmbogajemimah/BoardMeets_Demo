@@ -48,4 +48,12 @@ def edit_organization(request, pk):
     else:
         form = OrganizationForm(instance=organization)
     return render(request, 'base/edit_organization.html', {'form': form})
-        
+
+# DEleting An Organization from the Model
+def delete_organization(request, pk):
+    organization = get_object_or_404(Organization, pk=pk)
+
+    if request.method == "POST":
+        organization.delete()
+        return redirect('organizations_list')
+    return render(request, 'base/delete_organization.html', {'organization': organization})

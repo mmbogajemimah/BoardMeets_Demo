@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Organization</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        
+        <div class="container mt-4">
+            <h1 class="text-center">DELETE {{ organization.organization_name }}</h1>
+            {% if organization %}
+                <div class="row mt-4">
+                    <div class="col-md-4">
+                        <div class="card organization-card">
+                            <div class="card-header">
+                                <h4 class="card-title">{{organization.organization_name}}</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-text"><strong>Location: </strong>{{ organization.location }}</div>
+                                <div class="card-text"><strong>Phone: </strong>{{ organization.phone_number }}</div>
+                                <div class="card-text"><strong>Website: </strong>{{ organization.website }}</div>
+                                <div class="card-text"><strong>Staff: </strong>{{ organization.stuff_number }}</div>
+                                <div class="card-text"><strong>Address: </strong>{{ organization.address }}</div>
+                                <div class="card-text"><strong>Industry: </strong>{{ organization.industry }}</div>
+                                <div class="card-text"><strong>Established: </strong>{{ organization.established_date }}</div>
+                                <div class="card-text"><strong>Charity Org: </strong>{{ organization.is_nonprofit }}</div>
+                            </div>
+                            <div class="card-footer">
+                                
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-8">
+                        <div class="card organization-card">
+                            <div class="card-header">
+                                <h4 class="card-title">Description</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">{{ organization.description }}</p>
+                            </div>
+                            <div class="card-header mt-2">
+                                <h4 class="card-title">Social Media Links</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-text"><strong>Facebook: </strong>{{ organization.social_media_facebook }}</div>
+                                <div class="card-text"><strong>Twitter: </strong>{{ organization.social_media_twitter }}</div>
+                                <div class="card-text"><strong>Instagram: </strong>{{ organization.social_media_instagram }}</div>
+                                <div class="card-text"><strong>LinkedIn: </strong>{{ organization.social_media_linkedin }}</div>
+                            </div>
+
+                            <div class="card-footer">
+                                <h5>Are you sure you want to delete {{ organization.organization_name }}?</h5>
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger mr-2">Delete</button>
+                                    <a href="{% url 'organizations_list' %}" class="btn btn-secondary">Cancel</a>
+                                </form>
+    
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        
+    </div>
+</body>
+</html>

@@ -59,7 +59,7 @@
                         <td>
                             <a href="{% url 'organization_detail' organization.id %}" class="btn btn-primary">View</a>
                             <a href="{% url 'edit_organization' pk=organization.pk %}" class="btn btn-success">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
+                            <a href="{% url 'delete_organization' pk=organization.pk %}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 {% empty %}
