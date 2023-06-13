@@ -14,7 +14,12 @@ def organization_list(request):
     # return render(request, 'base/organizations_list.html')
 
 #Counts the number of organizations in Organizations Model
+def organization_number(request):
+    organizations = Organization.objects.all()
+    organizations_count = organizations.count()
+    return render(request, 'base/home.html', {'organizations_count': organizations_count})
 
+# Logic for displaying organizations details
 def organization_detail(request, pk):
     organization = get_object_or_404(Organization, pk=pk)
     return render(request, 'base/organization_detail.html', {'organization': organization})
