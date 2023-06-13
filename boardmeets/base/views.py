@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Organization
+from .forms import OrganizationForm
 
 # Create your views here.
 def index(request):
@@ -23,3 +24,28 @@ def organization_number(request):
 def organization_detail(request, pk):
     organization = get_object_or_404(Organization, pk=pk)
     return render(request, 'base/organization_detail.html', {'organization': organization})
+
+# Adding an Organization
+def add_organization(request):
+    if request.method == "POST":
+        form = OrganizationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('organizations_list')
+    else:
+        form = OrganizationForm()
+    return render(request, 'base/add_organization.html', {'form': form})
+        
+#Editing Organization Details
+def edit_organization(request, pk):
+    organization = get_object_or_404(Organization, pk=pk)
+
+    if request.method == "POST":
+        form = OrganizationForm(request.POST, instance=organization)
+        if form.is_valid():
+            form.save()
+            return redirect('organization_detail', pk=organization.pk)
+    else:
+        form = OrganizationForm(instance=organization)
+    return render(request, 'base/edit_organization.html', {'form': form})
+        
