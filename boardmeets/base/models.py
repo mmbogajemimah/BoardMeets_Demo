@@ -1,7 +1,9 @@
 from django.db import models
+import uuid
 
 # Create your models here.
 class Organization(models.Model):
+    id = models.AutoField(primary_key=True)
     organization_name = models.CharField(max_length=200)
     description = models.CharField(max_length=1000, default=None)
     location = models.CharField(max_length=50)
