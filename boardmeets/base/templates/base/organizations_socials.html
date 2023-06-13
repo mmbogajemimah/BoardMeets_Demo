@@ -1,32 +1,59 @@
-<!-- organizations_list.html -->
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Organization Names</title>
+    <title>Socials</title>
+    <!-- Add Bootstrap CSS CDN link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        .card-text a {
+            color: #424141;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card-text a:hover {
+            color: #999999;
+        }
+    </style>
 </head>
 <body>
-    <h1>Organizations List</h1>
-    <ul>
-        {% for organization in organizations %}
-            <li>
-                <h3>{{ organization.organization_name }}</h3>
-                <!-- <p>{{ organization.location }}</p>
-                <p>{{ organization.phone_number }}</p>
-                <p>{{ organization.website }}</p>
-                <p>{{ organization.stuff_number}}</p>
-                <p>{{ organization.address }}</p>
-                <p>{{ organization.industry }}</p>
-                <p>{{ organization.is_nonprofit }}</p>
-                <p>{{ organization.established_date }}</p>
-                <p>{{ organization.social_media_facebook }}</p>
-                <p>{{ organization.social_media_instagram }}</p>
-                <p>{{ organization.social_media_linkedin }}</p>
-                <p>{{ organization.social_media_twitter }}</p> -->
-            </li>
-        {% empty %}
-            <li>No organizations found.</li>
-        {% endfor %}
-    </ul>
+    
+    <div class="container">
+        <h2>Organizations Social Accounts</h2>
+        <div class="row">
+            {% for organization in organizations %}
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">{{ organization.organization_name }}</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <a href="{{ organization.social_media_facebook }}" target="_blank">Facebook</a>
+                            </p>
+                            <p class="card-text">
+                                <a href="{{ organization.social_media_instagram }}" target="_blank">Instagram</a>
+                            </p>
+                            <p class="card-text">
+                                <a href="{{ organization.social_media_linkedin }}" target="_blank">LinkedIn</a>
+                            </p>
+                            <p class="card-text">
+                                <a href="{{ organization.social_media_twitter }}" target="_blank">Twitter</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col">
+                    <p>No organizations found.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Add Bootstrap JS CDN link here -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

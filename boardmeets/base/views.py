@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Organization
 from .forms import OrganizationForm
 
+# ORGANIZATIONS VIEW FUNCTIONS
 # Create your views here.
 def index(request):
     return render(request, 'base/home.html')
@@ -57,3 +58,10 @@ def delete_organization(request, pk):
         organization.delete()
         return redirect('organizations_list')
     return render(request, 'base/delete_organization.html', {'organization': organization})
+
+
+# ORGANIZATIONS_SOCIAL VIEW FUNCTIONS
+def organizations_socials(request):
+    organizations = Organization.objects.all()
+    context = {'organizations': organizations}
+    return render(request, 'base/organizations_socials.html', context)

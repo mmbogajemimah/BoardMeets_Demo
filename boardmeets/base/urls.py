@@ -7,5 +7,6 @@ urlpatterns = [
     path("organizations/add", views.add_organization, name='add_organization'),
     path("organizations/<int:pk>/", views.organization_detail, name='organization_detail'),
     path("organizations/<int:pk>/edit/", views.edit_organization, name="edit_organization"),
-    path("organizations/<int:pk>/delete/", views.delete_organization, name='delete_organization')
+    path("organizations/<int:pk>/delete/", views.delete_organization, name='delete_organization'),
+    path("organizations/socials", views.organizations_socials, name='organizations_socials')
 ]
