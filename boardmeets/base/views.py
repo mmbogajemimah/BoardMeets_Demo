@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from .models import Organization
+from .models import Organization, Leader
 from .forms import OrganizationForm
 
 # ORGANIZATIONS VIEW FUNCTIONS
@@ -65,3 +65,30 @@ def organizations_socials(request):
     organizations = Organization.objects.all()
     context = {'organizations': organizations}
     return render(request, 'base/organizations_socials.html', context)
+
+# LEADER : ORGANIZATIONS_LEADERS
+def organizations_names(request):
+    organizations = Organization.objects.all()
+    context = {'organizations': organizations}
+    return render(request, 'base/organization_names.html', context)
+
+
+def organization_leaders(request, organization_id):
+    organization = get_object_or_404(Organization, id=organization_id)
+    organization_leaders = Leader.objects.filter(organization=organization)
+
+    context = {
+        'organization': organization,
+        'leaders': organization_leaders
+    }
+
+    return render(request, 'base/organization_leaders.html', context)
+
+# def organization_leaders(request):
+#     organizations = Organization.objects.all()
+
+#     context = {
+#         'organizations': organizations
+#     }
+
+#     return render(request, 'organization_leaders.html', context)

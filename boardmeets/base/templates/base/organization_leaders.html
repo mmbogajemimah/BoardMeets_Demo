@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Organization Leaders</title>
+</head>
+<body>
+    <h1>Organization Leaders</h1>
+    
+    <h2>{{ organization.organization_name }}</h2>
+    <ul>
+        {% for leader in leaders %}
+            <li>
+                <h3>{{ leader.name }}</h3>
+                <p>Title: {{ leader.title }}</p>
+                <p>Email: {{ leader.email }}</p>
+                <p>Phone: {{ leader.contact }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
