@@ -64,7 +64,7 @@
     <h1 class="text-center mt-4 mb-4">{{organization.organization_name}} Leaders</h1>
     
     <div class="container">
-        <a href="#" class="btn btn-secondary mb-4">Back</a>
+        <a href="{% url 'organization_names' %}" class="btn btn-secondary mb-4">Back</a>
         <div class="row">
             {% for leader in leaders %}
                 <div class="col-md-4">
@@ -78,13 +78,13 @@
                                 <li>
                                     <p>Email: {{ leader.email }}</p>
                                     <p>Phone: {{ leader.contact }}</p>
-                                    <p>Id: {{ leader.id }}</p>
+                                    
                                 </li>
                             </ul>
                         </div>
                         <div class="card-footer">
                             <a href="{% url 'edit_leader' organization_id=organization.id leader_id=leader.id%}" class="btn btn-success">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
+                            <a href="{% url 'delete_leader' organization_id=organization.id leader_id=leader.id %}" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
                 </div>
