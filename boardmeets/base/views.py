@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Organization, Leader
-from .forms import OrganizationForm
+from .forms import OrganizationForm, LeaderForm
 
 # ORGANIZATIONS VIEW FUNCTIONS
 # Create your views here.
@@ -83,6 +83,22 @@ def organization_leaders(request, organization_id):
     }
 
     return render(request, 'base/organization_leaders.html', context)
+
+#editing a leader
+def edit_leader(request, organization_id, leader_id):
+    leader = get_object_or_404(Leader, id=leader_id)
+
+    if request.method == "POST":
+        form = LeaderForm(request.POST, instance=leader)
+        if form.is_valid():
+            form.save()
+            # Redirect to the leaders page
+            return redirect('organization_leaders', organization_id=organization_id)
+    else:
+        form = LeaderForm(instance=leader)
+
+    return render(request, 'base/edit_leader.html', {'form': form, 'leader': leader})
+
 
 # def organization_leaders(request):
 #     organizations = Organization.objects.all()
