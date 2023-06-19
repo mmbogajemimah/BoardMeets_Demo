@@ -99,6 +99,29 @@ def edit_leader(request, organization_id, leader_id):
 
     return render(request, 'base/edit_leader.html', {'form': form, 'leader': leader})
 
+def delete_leader(request, organization_id, leader_id):
+    leader = get_object_or_404(Leader, id=leader_id)
+
+    if request.method == "POST":
+        leader.delete()
+        #Redirect
+        return redirect('organization_leaders', organization_id=organization_id)
+    return render(request, 'base/delete_leader.html', {'leader': leader, 'organization_id': organization_id})
+
+#Add a new leader
+def add_leader(request, organization_id):
+    if request.method == "POST":
+        form = LeaderForm(request.POST)
+        if form.is_valid():
+            leader = form.save(commit = False)
+            leader.organization_id = organization_id
+            leader.save()
+            return redirect('organization_leaders', organization_id=organization_id)
+    else:
+        form = LeaderForm()
+
+    return render(request, 'base/add_leader.html', {'form': form, 'organization_id': organization_id})
+
 
 # def organization_leaders(request):
 #     organizations = Organization.objects.all()
