@@ -123,6 +123,19 @@ def add_leader(request, organization_id):
     return render(request, 'base/add_leader.html', {'form': form, 'organization_id': organization_id})
 
 
+# ORGANIZATION CONTACTS
+def organizations_contacts(request):
+    organizations = Organization.objects.all()
+    context = {'organizations': organizations}
+    return render(request, 'base/organization_contacts.html', context)
+
+
+# def organizations_contacts(request, organization_id):
+#     organization = get_object_or_404(Organization, id=organization_id)
+#     contacts = organization.phone_number
+#     return render(request, 'base/organization_contacts.html', {'organization': organization, 'contacts': contacts})
+
+
 # def organization_leaders(request):
 #     organizations = Organization.objects.all()
 

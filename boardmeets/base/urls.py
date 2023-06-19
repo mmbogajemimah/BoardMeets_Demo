@@ -14,6 +14,7 @@ urlpatterns = [
     path("organization-leaders/<int:organization_id>/<int:leader_id>/edit/", views.edit_leader, name='edit_leader'),
     path("organization-leaders/<int:organization_id>/<int:leader_id>/delete", views.delete_leader, name='delete_leader'),
     path("organization-leaders/<int:organization_id>/add", views.add_leader, name='add_leader'),
+    path("organizations-contacts/", views.organizations_contacts, name='organization_contacts'),
     
     # path("organization-leaders/<int:organization_id>/<int:leader_id>/edit/", views.edit_leader, name='edit_leader'),
     
