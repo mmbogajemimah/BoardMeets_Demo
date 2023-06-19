@@ -15,6 +15,41 @@
     <!-- FONT AWESOME LIBRARY -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .home-footer {
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+        .home-footer {
+            position: relative; /* Change the footer position to relative on smaller screens */
+            margin-top: 1rem;
+        }   
+
+        .content {
+            padding-bottom: 0; /* Remove the padding on smaller screens to avoid excessive white space */
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+    }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-color">
@@ -109,21 +144,20 @@
                   </div>
             </div>
         </div>
+
     </div>
     
     <!-- FOOTER -->
-    <div class="container">
-        <footer class="home-footer text-white p-4 fixed-bottom">
-            <div class="d-flex justify-content-center align-items-center">
-                <span class="me-3" style="font-size: 18px;">
-                <i class="fas fa-user"></i> Users
-                </span>
-                <span class="ms-3" style="font-size: 18px;">
-                <i class="fas fa-users"></i> Groups
-                </span>
-            </div>
-        </footer>
-    </div>
+    <footer class="home-footer text-white p-4 fixed">
+        <div class="d-flex justify-content-center align-items-center">
+            <span class="me-3" style="font-size: 18px;">
+            <i class="fas fa-user"></i> Users
+            </span>
+            <span class="ms-3" style="font-size: 18px;">
+            <i class="fas fa-users"></i> Groups
+            </span>
+        </div>
+    </footer>
 
     <!-- Bootstrap Javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
