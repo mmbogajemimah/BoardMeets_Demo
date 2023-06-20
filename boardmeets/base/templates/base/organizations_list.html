@@ -1,5 +1,4 @@
 {% load static %}
-<!-- organizations_list.html -->
 
 <!DOCTYPE html>
 <html>
@@ -65,6 +64,25 @@
         }
     }   
 
+    /* Add new CSS style for the "Actions" column */
+    .actions-column {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .actions-column .btn {
+        margin-left: 5px;
+    }
+
+    .action-header {
+        margin-right: 6rem;
+    }
+
+    /* Custom CSS for equal width buttons */
+    .equal-width-btns .btn {
+        flex: 0 0 auto;
+        width: 80px;
+    }
     </style>
 </head>
 <body>
@@ -80,14 +98,14 @@
     <div class="container organization-link">
         <h1 class="text-center mt-4 mb-4">Organizations List</h1>
         <hr>
-        <a href="{% url 'index' %}" class="btn btn-secondary mb-3">Back</a>
-        <a href="{% url 'add_organization' %}" class="btn btn-warning mb-3">Add</a>
+        <a href="{% url 'index' %}" class="btn btn-outline-secondary mb-3">Back</a>
+        <a href="{% url 'add_organization' %}" class="btn btn-outline-warning mb-3">Add</a>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">Index</th>
                     <th scope="col">Organization Name</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col" class="actions-column action-header">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -95,10 +113,10 @@
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
                         <td>{{ organization.organization_name }}</td>
-                        <td>
-                            <a href="{% url 'organization_detail' organization.id %}" class="btn btn-primary">View</a>
-                            <a href="{% url 'edit_organization' pk=organization.pk %}" class="btn btn-success">Edit</a>
-                            <a href="{% url 'delete_organization' pk=organization.pk %}" class="btn btn-danger">Delete</a>
+                        <td class="actions-column equal-width-btns">
+                            <a href="{% url 'organization_detail' organization.id %}" class="btn btn-outline-info btn-sm">View</a>
+                            <a href="{% url 'edit_organization' pk=organization.pk %}" class="btn btn-outline-success btn-sm">Edit</a>
+                            <a href="{% url 'delete_organization' pk=organization.pk %}" class="btn btn-outline-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                 {% empty %}
