@@ -30,6 +30,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            padding-bottom: 90px;
         }
 
         .content {
@@ -46,11 +47,6 @@
         }
 
         @media (max-width: 600px) {
-        .home-footer {
-            position: relative; /* Change the footer position to relative on smaller screens */
-            margin-top: 1rem;
-        }   
-
         .content {
             padding-bottom: 0; /* Remove the padding on smaller screens to avoid excessive white space */
         }
@@ -75,7 +71,7 @@
     }
 
     .action-header {
-        margin-right: 6rem;
+        padding-right: 7rem!important;
     }
 
     /* Custom CSS for equal width buttons */
@@ -105,7 +101,7 @@
                 <tr>
                     <th scope="col">Index</th>
                     <th scope="col">Organization Name</th>
-                    <th scope="col" class="actions-column action-header">Actions</th>
+                    <th scope="col" class="actions-column action-header px-6">Actions</th>
                 </tr>
             </thead>
             <tbody>
