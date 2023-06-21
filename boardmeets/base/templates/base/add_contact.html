@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Contact</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/add_contact.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Add Contact</h2>
+    <form method="POST" action="{% url 'add_contact' organization.id %}">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="phone_number">Phone Number</label>
+            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter phone number" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Contact</button>
+    </form>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
