@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Organization, Leader
-from .forms import OrganizationForm, LeaderForm
+from .forms import OrganizationForm, LeaderForm, ContactForm
 
 # ORGANIZATIONS VIEW FUNCTIONS
 # Create your views here.
@@ -131,44 +131,57 @@ def organizations_contacts(request):
     context = {'organizations': organizations}
     return render(request, 'base/organization_contacts.html', context)
 
+# Adds a new contact on the contacts list
+def add_contact(request, organization_id):
+    organization = get_object_or_404(Organization, id=organization_id)
+
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            new_contact = form.cleaned_data.get('phone_number')
+            existing_contacts = organization.phone_number
+            if existing_contacts:
+                organization.phone_number = f"{existing_contacts}, {new_contact}"
+            else:
+                organization.phone_number = new_contact
+            organization.save()
+            return redirect('organizations_contacts')
+    else:
+        form = ContactForm()
+
+    return render(request, 'base/add_contact.html', {'form': form, 'organization': organization})
 
 
+def edit_contact(request, organization_id):
+    organization = get_object_or_404(Organization, id=organization_id)
 
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            contact = form.cleaned_data.get('phone_number')
+            organization.phone_number = contact
+            organization.save()
+            return redirect('organizations_contacts')
+    else:
+        form = ContactForm(instance=organization)
 
+    return render(request, 'base/edit_contact.html', {'form': form, 'organization': organization})
 
+from django.contrib import messages
 
+def delete_contact(request, organization_id):
+    organization = get_object_or_404(Organization, id=organization_id)
 
+    if request.method == "POST":
+        contact_to_delete = request.POST.get('contact')
+        existing_contacts = organization.phone_number
 
+        if existing_contacts and contact_to_delete in existing_contacts:
+            # Remove the contact from the existing contacts
+            updated_contacts = existing_contacts.replace(contact_to_delete, '').strip(', ')
+            organization.phone_number = updated_contacts
+            organization.save()
+            messages.success(request, 'Contact deleted successfully.')
 
+    return redirect('organizations_contacts')
 
-
-
-
-
-
-
-
-
-
-
-
-# def organizations_contacts(request):
-#     organizations = Organization.objects.all()
-#     context = {'organizations': organizations}
-#     return render(request, 'base/organization_contacts.html', context)
-
-# # Retriving organization's contact
-# def contacts(request, organization_id):
-#     organization = get_object_or_404(Organization, id=organization_id)
-#     contacts = organization.phone_number
-#     return render(request, 'base/contact.html', {'organization': organization, 'contacts': contacts})
-
-
-# def organization_leaders(request):
-#     organizations = Organization.objects.all()
-
-#     context = {
-#         'organizations': organizations
-#     }
-
-#     return render(request, 'organization_leaders.html', context)
