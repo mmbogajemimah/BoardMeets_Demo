@@ -124,16 +124,44 @@ def add_leader(request, organization_id):
 
 
 # ORGANIZATION CONTACTS
+# A list of all organizations 
+
 def organizations_contacts(request):
     organizations = Organization.objects.all()
     context = {'organizations': organizations}
     return render(request, 'base/organization_contacts.html', context)
 
 
-def organizations_contacts(request, organization_id):
-    organization = get_object_or_404(Organization, id=organization_id)
-    contacts = organization.phone_number
-    return render(request, 'base/contact.html', {'organization': organization, 'contacts': contacts})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def organizations_contacts(request):
+#     organizations = Organization.objects.all()
+#     context = {'organizations': organizations}
+#     return render(request, 'base/organization_contacts.html', context)
+
+# # Retriving organization's contact
+# def contacts(request, organization_id):
+#     organization = get_object_or_404(Organization, id=organization_id)
+#     contacts = organization.phone_number
+#     return render(request, 'base/contact.html', {'organization': organization, 'contacts': contacts})
 
 
 # def organization_leaders(request):
