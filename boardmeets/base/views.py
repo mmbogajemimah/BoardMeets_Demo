@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Organization, Leader
-from .forms import OrganizationForm, LeaderForm, ContactForm
+from .forms import OrganizationForm, LeaderForm, ContactForm, SocialForm
 
 # ORGANIZATIONS VIEW FUNCTIONS
 # Create your views here.
@@ -65,6 +65,20 @@ def organizations_socials(request):
     organizations = Organization.objects.all()
     context = {'organizations': organizations}
     return render(request, 'base/organizations_socials.html', context)
+
+#Edit Socials
+def edit_socials(request, organization_id):
+    organization = get_object_or_404(Organization, id=organization_id)
+
+    if request.method == "POST":
+        form = SocialForm(request.POST, instance=organization)
+        if form.is_valid():
+            organization = form.save()
+            return redirect('organizations_socials')
+    else:
+        form = SocialForm(instance=organization)
+    return render(request, 'base/edit_socials.html', {'form': form, 'organization': organization})
+
 
 # LEADER : ORGANIZATIONS_LEADERS
 def organizations_names(request):

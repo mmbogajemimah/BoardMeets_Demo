@@ -1,0 +1,6 @@
+<h1>Edit Socials</h1>
+<form method="POST" action="{% url 'edit_socials' organization.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Edit Socials</button>
+</form>

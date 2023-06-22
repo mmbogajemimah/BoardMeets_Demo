@@ -15,3 +15,8 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = Organization
         fields = ['phone_number']
+
+class SocialForm(forms.ModelForm):
+    class Meta:
+        model = Organization
+        fields = ['social_media_facebook', 'social_media_instagram', 'social_media_linkedin', 'social_media_twitter']
