@@ -41,14 +41,42 @@
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-color">
+        <div class="container-fluid d-flex align-items-center">
+            <img class="logo-image" src="{% static '/images/logo.jpg' %}" alt="logo">
+            <a class="navbar-brand d-flex mx-auto" href="#">
+                <h2 class="mb-0"></h2>
+            </a>
+        </div>
+    </nav>
     <div class="container">
         <h1 class="text-center mb-4">Add Leader</h1>
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            <!-- {{ form.as_p }} -->
+
+            <div class="form-group mb-3">
+                <label for="name"><h5>Name</h5></label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Leader Name" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="title"><h5>Title</h5></label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Enter Leader Title" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="email"><h5>Email</h5></label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="phone_number"><h5>Contact</h5></label>
+                <input type="text" class="form-control" id="contact" name="contact" placeholder="Enter phone number" required>
+            </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">Add Leader</button>
-                <a href="{% url 'organization_leaders' organization_id %}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-outline-info">Add Leader</button>
+                <a href="{% url 'organization_names' %}" class="btn btn-outline-secondary">Cancel</a>
             </div>
         </form>
     </div>
