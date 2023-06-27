@@ -33,4 +33,14 @@ class Leader(models.Model):
     def __str__(self):
         return self.name
 
-
+class License(models.Model):
+    id = models.AutoField(primary_key=True)
+    action = models.CharField(max_length=50, default=None)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    license_key = models.CharField(max_length=100)
+    server_id = models.CharField(max_length=150)
+    mac_address = models.CharField(max_length=200)
+    license_type = models.CharField(max_length=150)
+    license_expiry_date = models.DateField(default=True)
+    number_of_users = models.IntegerField(default=0)
+    is_active = models.BooleanField(default=False)
