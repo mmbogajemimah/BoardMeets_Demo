@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from .models import Organization, Leader
-from .forms import OrganizationForm, LeaderForm, ContactForm, SocialForm
+from .models import Organization, Leader, License
+from .forms import OrganizationForm, LeaderForm, ContactForm, SocialForm, LicenseForm
 
 # ORGANIZATIONS VIEW FUNCTIONS
 # Create your views here.
@@ -199,3 +199,30 @@ def delete_contact(request, organization_id):
 
     return redirect('organizations_contacts')
 
+# LICENSE
+def license_list(request):
+    licenses = License.objects.all()
+    return render(request, 'base/license_list.html', {'licenses': licenses})
+
+def current_users(request):
+    licenses = License.objects.all()
+    return render(request, 'base/current_users.html', {'licenses':licenses})
+
+#Adding a license
+def add_license(request):
+    if request.method == 'POST':
+        form = LicenseForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('license_body')
+    else:
+        form = LicenseForm()
+
+    context = {'form': form}
+    return render(request, 'base/add_license.html', context)
+
+def edit_license(request):
+    pass
+
+def delete_license(request):
+    pass
