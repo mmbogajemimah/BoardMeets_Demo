@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- LOADING CSS FILE -->
+    <link rel="stylesheet" href="{% static '/css/main.css' %}" type="text/css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- FONT AWESOME LIBRARY -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>License List</title>
+</head>
+<body>
+    <nav class="navbar navbar-color">
+        <div class="container-fluid d-flex align-items-center">
+            <img class="logo-image" src="{% static '/images/logo.jpg' %}" alt="logo">
+            <a class="navbar-brand d-flex mx-auto" href="#">
+                <h2 class="mb-0">LICENSE BODY</h2>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="text-center mt-4 mb-4 ">License List</h1>
+        <hr>
+        <a href="{% url 'index' %}" class="btn btn-outline-secondary mb-3">Back</a>
+        <a href="#" class="btn btn-outline-warning mb-3">Add</a>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Index</th>
+                    <th scope="col">organizations</th>
+                    <th scope="col">License key</th>
+                    <th scope="col">Server id</th>
+                    <th scope="col">Mac Address</th>
+                    <th scope="col">License Type</th>
+                    <th scope="col">License expiry date</th>
+                    <th scope="col">Number of users</th>
+                    <th scope="col">Is active</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for license in licenses %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ license.organization }}</td>
+                        <td>{{ license.license_key }}</td>
+                        <td>{{ license.server_id }}</td>
+                        <td>{{ license.mac_address }}</td>
+                        <td>{{ license.license_type }}</td>
+                        <td>{{ license.license_expiry_date }}</td>
+                        <td>{{ license.number_of_users }}</td>
+                        <td>{{ license.is_active }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="3">No licenses found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    
+    
+</body>
+</html>
+
+
