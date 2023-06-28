@@ -31,7 +31,7 @@
         <h1 class="text-center mt-4 mb-4 ">License List</h1>
         <hr>
         <a href="{% url 'index' %}" class="btn btn-outline-secondary mb-3">Back</a>
-        <a href="#" class="btn btn-outline-warning mb-3">Add</a>
+        <a href="{% url 'add_license' %}" class="btn btn-outline-warning mb-3">Add</a>
 
         <table class="table table-striped">
             <thead>
@@ -45,6 +45,7 @@
                     <th scope="col">License expiry date</th>
                     <th scope="col">Number of users</th>
                     <th scope="col">Is active</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -59,6 +60,10 @@
                         <td>{{ license.license_expiry_date }}</td>
                         <td>{{ license.number_of_users }}</td>
                         <td>{{ license.is_active }}</td>
+                        <td>
+                            <a href="" class="btn btn-outline-success btn-sm">Edit</a>
+                            <a href="" class="btn btn-outline-danger btn-sm">Delete</a>
+                        </td>
                     </tr>
                 {% empty %}
                     <tr>

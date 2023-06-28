@@ -1,0 +1,8 @@
+<h1>Add License</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+    <a href="{% url 'license_body' %}">Back</a>
+</form>
