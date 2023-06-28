@@ -20,6 +20,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            padding-bottom: 90px;
         }
 
         .content {
@@ -36,10 +37,7 @@
         }
 
         @media (max-width: 768px) {
-        .home-footer {
-            position: relative; /* Change the footer position to relative on smaller screens */
-            margin-top: 1rem;
-        }   
+          
 
         .content {
             padding-bottom: 0; /* Remove the padding on smaller screens to avoid excessive white space */
@@ -74,7 +72,7 @@
                         <h5>Licence Body</h5>
                     </div>
                     <div class="card-body">
-                        <a href="#"><h6>2</h6></a>
+                        <a href="{% url 'license_body' %}"><h6>2</h6></a>
                     </div>
                 </div>
             </div>
@@ -86,7 +84,7 @@
                       <h5>Licence Current Users</h5>
                     </div>
                     <div class="card-body">
-                      <a href="#"><h6>5</h6></a>
+                      <a href="{% url 'current_users' %}"><h6>5</h6></a>
                     </div>
                 </div>
             </div>
@@ -148,7 +146,7 @@
     </div>
     
     <!-- FOOTER -->
-    <footer class="home-footer text-white p-4 fixed-bottom">
+    <footer class="home-footer text-white p-3 fixed-bottom">
         <div class="d-flex justify-content-center align-items-center">
             <span class="me-3" style="font-size: 18px;">
             <i class="fas fa-user"></i> Users
