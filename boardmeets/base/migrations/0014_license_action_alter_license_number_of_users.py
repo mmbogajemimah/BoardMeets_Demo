@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='license',
             name='action',
-            field=models.CharField(default=None, max_length=50),
+            field=models.CharField(default='default value', max_length=50),
         ),
         migrations.AlterField(
             model_name='license',
