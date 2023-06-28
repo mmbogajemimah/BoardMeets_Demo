@@ -35,7 +35,6 @@ class Leader(models.Model):
 
 class License(models.Model):
     id = models.AutoField(primary_key=True)
-    action = models.CharField(max_length=50, default=None)
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     license_key = models.CharField(max_length=100)
     server_id = models.CharField(max_length=150)
