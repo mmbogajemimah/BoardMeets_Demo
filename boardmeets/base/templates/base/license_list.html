@@ -27,7 +27,7 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="">
         <h1 class="text-center mt-4 mb-4 ">License List</h1>
         <hr>
         <a href="{% url 'index' %}" class="btn btn-outline-secondary mb-3">Back</a>
@@ -61,7 +61,7 @@
                         <td>{{ license.number_of_users }}</td>
                         <td>{{ license.is_active }}</td>
                         <td>
-                            <a href="" class="btn btn-outline-success btn-sm">Edit</a>
+                            <a href="{% url 'edit_license' license.id %}" class="btn btn-outline-success btn-sm">Edit</a>
                             <a href="" class="btn btn-outline-danger btn-sm">Delete</a>
                         </td>
                     </tr>

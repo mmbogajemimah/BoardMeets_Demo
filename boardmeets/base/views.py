@@ -221,8 +221,18 @@ def add_license(request):
     context = {'form': form}
     return render(request, 'base/add_license.html', context)
 
-def edit_license(request):
-    pass
+def edit_license(request, license_id):
+    license = get_object_or_404(License, id=license_id)
+    if request.method =='POST':
+        form = LicenseForm(request.POST, instance=license)
+        if form.is_valid():
+            form.save()
+            # Redirect to the license page
+            return redirect('license_body')
+    else:
+        form = LicenseForm(instance=license)
+
+    return render(request, 'base/edit_license.html', {'form': form, 'license': license})
 
 def delete_license(request):
     pass
