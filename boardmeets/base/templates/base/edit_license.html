@@ -5,16 +5,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <title>Edit License</title>
-
-    <!-- LOADING CSS FILE -->
-    <link rel="stylesheet" href="{% static '/css/main.css' %}" type="text/css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
-    <!-- FONT AWESOME LIBRARY -->
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static '/css/main.css' %}" type="text/css">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
@@ -26,6 +25,30 @@
             margin: 0 auto;
             padding-top: 100px;
         }
+        .navbar-color {
+            background-color: #333;
+            color: #fff;
+        }
+        .navbar-brand {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .btn-success {
+            margin-top: 20px;
+        }
+        .home-footer {
+            
+            color: #fff;
+            padding: 10px;
+        }
+        .home-footer span {
+            font-size: 18px;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
@@ -33,7 +56,7 @@
         <div class="container-fluid d-flex align-items-center">
             <img class="logo-image" src="{% static '/images/logo.jpg' %}" alt="logo">
             <a class="navbar-brand d-flex mx-auto" href="#">
-                <h2 class="mb-0">LICENCE TOOL</h2>
+                LICENCE TOOL
             </a>
         </div>
     </nav>
@@ -43,39 +66,40 @@
         <form action="" method="post">
             {% csrf_token %}
             <div class="mb-3">
-                <label for="id_name" class="form-label">Organization: </label>
+                <label for="id_organization" class="form-label">Organization:</label>
                 {{ form.organization }}
             </div>
             <div class="mb-3">
-                <label for="id_name" class="form-label">License Key: </label>
+                <label for="id_license_key" class="form-label">License Key:</label>
                 {{ form.license_key }}
             </div>
             <div class="mb-3">
-                <label for="id_position" class="form-label">Server Id: </label>
+                <label for="id_server_id" class="form-label">Server Id:</label>
                 {{ form.server_id }}
             </div>
             <div class="mb-3">
-                <label for="id_email" class="form-label">Mac Address: </label>
+                <label for="id_mac_address" class="form-label">Mac Address:</label>
                 {{ form.mac_address }}
             </div>
             <div class="mb-3">
-                <label for="id_email" class="form-label">License Type: </label>
+                <label for="id_license_type" class="form-label">License Type:</label>
                 {{ form.license_type }}
             </div>
             <div class="mb-3">
-                <label for="id_position" class="form-label">License Expiry Date: </label>
+                <label for="id_license_expiry_date" class="form-label">License Expiry Date:</label>
                 {{ form.license_expiry_date }}
             </div>
             <div class="mb-3">
-                <label for="id_email" class="form-label">Number of Users: </label>
+                <label for="id_number_of_users" class="form-label">Number of Users:</label>
                 {{ form.number_of_users }}
             </div>
             <div class="mb-3">
-                <label for="id_email" class="form-label">Is Active: </label>
+                <label for="id_is_active" class="form-label">Is Active:</label>
                 {{ form.is_active }}
             </div>
             
-            <button type="submit" class="btn btn-success">Save </button>
+            <button type="submit" class="btn btn-outline-success">Save</button>
+            <a href="{% url 'license_body' %}" class="btn btn-outline-secondary">Back</a>
             
         </form>
     </div>
@@ -83,11 +107,11 @@
      <!-- FOOTER -->
     <footer class="home-footer text-white p-3 fixed-bottom">
         <div class="d-flex justify-content-center align-items-center">
-            <span class="me-3" style="font-size: 18px;">
-            <i class="fas fa-user"></i> Users
+            <span>
+                <i class="fas fa-user"></i> Users
             </span>
-            <span class="ms-3" style="font-size: 18px;">
-            <i class="fas fa-users"></i> Groups
+            <span>
+                <i class="fas fa-users"></i> Groups
             </span>
         </div>
     </footer>

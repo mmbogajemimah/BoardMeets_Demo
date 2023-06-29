@@ -1,10 +1,3 @@
-<h1>Edit Socials</h1>
-<form method="POST" action="{% url 'edit_socials' organization.id %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Edit Socials</button>
-</form>
-
 {% load static %}
 
 <!DOCTYPE html>
@@ -26,8 +19,75 @@
     <!-- FONT AWESOME LIBRARY -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <style>
+        body {
+           padding-bottom: 80px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            width: 100%;
+        }
+    </style>
+
 </head>
 <body>
-    
+    <nav class="navbar navbar-color">
+        <div class="container-fluid d-flex align-items-center">
+            <img class="logo-image" src="{% static '/images/logo.jpg' %}" alt="logo">
+            <a class="navbar-brand d-flex mx-auto" href="#">
+                <h2 class="mb-0">LICENCE TOOL</h2>
+            </a>
+        </div>
+    </nav>
+    <h1 class="mt-4 mb-4">Edit Socials</h1>
+    <form method="POST" action="{% url 'edit_socials' organization.id %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.social_media_facebook.id_for_label }}">Social Media Facebook</label>
+            {{ form.social_media_facebook }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.social_media_instagram.id_for_label }}">Social Media Instagram</label>
+            {{ form.social_media_instagram }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.social_media_linkedin.id_for_label }}">Social Media LinkedIn</label>
+            {{ form.social_media_linkedin }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.social_media_twitter.id_for_label }}">Social Media Twitter</label>
+            {{ form.social_media_twitter }}
+        </div>
+        <button type="submit" class="btn btn-outline-success">Edit</button>
+        <a href="{% url 'organizations_socials' %}" class="btn btn-outline-secondary">Back</a>
+    </form>
+
+    <footer class="home-footer text-white p-3 fixed-bottom">
+        <div class="d-flex justify-content-center align-items-center">
+            <span class="me-3" style="font-size: 18px;">
+            <i class="fas fa-user"></i> Users
+            </span>
+            <span class="ms-3" style="font-size: 18px;">
+            <i class="fas fa-users"></i> Groups
+            </span>
+        </div>
+    </footer>
 </body>
 </html>

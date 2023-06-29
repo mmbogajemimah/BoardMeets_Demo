@@ -25,3 +25,6 @@ class LicenseForm(forms.ModelForm):
     class Meta:
         model = License
         fields = '__all__'
+        widgets = {
+            'description': forms.Textarea(attrs={'class': 'custom-form-control'}),
+        }
