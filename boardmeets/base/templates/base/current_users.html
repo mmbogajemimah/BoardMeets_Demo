@@ -41,6 +41,7 @@
                     <th scope="col">License key</th>
                     <th scope="col">Number of users</th>
                     <th scope="col">Number of active users</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,6 +52,10 @@
                         <td>{{ license.license_key }}</td>
                         <td>{{ license.number_of_users }}</td>
                         <td>{{ license.number_of_users }}</td>
+                        <td>
+                            <a href="{% url 'edit_license' license.id %}" class="btn btn-outline-success btn-sm">Edit</a>
+                            <a href="{% url 'delete_license' license.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+                        </td>
                     </tr>
                 {% empty %}
                     <tr>

@@ -6,7 +6,9 @@ urlpatterns = [
     path("license-body/", views.license_list, name="license_body"),
     path("current-users/", views.current_users, name="current_users"),
     path("license-body/add-license/", views.add_license, name='add_license'),
-     path("license-body/edit-license/<int:license_id>", views.edit_license, name='edit_license'),
+    path("license-body/edit-license/<int:license_id>", views.edit_license, name='edit_license'),
+    path("license-body/delete-license/<int:license_id>", views.delete_license, name='delete_license'),
+
 
 
     path("organizations/", views.organization_list, name='organizations_list'),

@@ -210,6 +210,7 @@ def current_users(request):
 
 #Adding a license
 def add_license(request):
+   
     if request.method == 'POST':
         form = LicenseForm(request.POST)
         if form.is_valid():
@@ -234,5 +235,10 @@ def edit_license(request, license_id):
 
     return render(request, 'base/edit_license.html', {'form': form, 'license': license})
 
-def delete_license(request):
-    pass
+def delete_license(request, license_id):
+    license = get_object_or_404(License, id=license_id)
+    if request.method == "POST":
+        license.delete()
+        # Redirect
+        return redirect('license_body')
+    return render(request, 'base/delete_license.html', {'license': license})
