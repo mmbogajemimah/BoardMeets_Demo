@@ -242,3 +242,4 @@ def delete_license(request, license_id):
         # Redirect
         return redirect('license_body')
     return render(request, 'base/delete_license.html', {'license': license})
+    
