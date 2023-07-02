@@ -235,6 +235,7 @@ def edit_license(request, license_id):
 
     return render(request, 'base/edit_license.html', {'form': form, 'license': license})
 
+
 def delete_license(request, license_id):
     license = get_object_or_404(License, id=license_id)
     if request.method == "POST":
@@ -243,3 +244,36 @@ def delete_license(request, license_id):
         return redirect('license_body')
     return render(request, 'base/delete_license.html', {'license': license})
     
+
+#CURRENT USER
+# Retrives a list of Current Users
+def currentuser_list (request):
+    licenses = License.objects.all()
+
+    #Extract the required data from each license object
+    organizations = [license.organization for license in licenses]
+    license_keys = [license.license_key for license in licenses]
+    number_of_users = [license.number_of_users for license in licenses]
+
+    #Pass the data to the template for rendering
+    context = {
+        'organizations': organizations,
+        'license_keys': license_keys,
+        'number_of_users': number_of_users,
+    }
+    
+    return render(request, 'base/edit_currentusers.html', context)
+
+# def edit_currentuser(request, license_id):
+#     if request.method == 'POST':
+#         #Retrive the updated number of users from the form
+#         updated_number_of_users = request.POST.get('number_of_users')
+
+#         try:
+#             license = License.objects.get(id=license_id)
+#             license.number_of_users = updated_number_of_users
+#             license.save()
+#             return redirect('licen')
+
+def delete_currentuser():
+    pass
