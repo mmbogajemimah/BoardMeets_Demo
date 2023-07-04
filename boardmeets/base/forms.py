@@ -28,3 +28,8 @@ class LicenseForm(forms.ModelForm):
         widgets = {
             'description': forms.Textarea(attrs={'class': 'custom-form-control'}),
         }
+
+class CurrentUsersLicenseForm(forms.ModelForm):
+    class Meta:
+        model = License
+        fields = ['organization', 'license_key', 'number_of_users']

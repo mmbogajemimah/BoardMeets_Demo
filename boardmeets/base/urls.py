@@ -8,6 +8,8 @@ urlpatterns = [
     path("license-body/add-license/", views.add_license, name='add_license'),
     path("license-body/edit-license/<int:license_id>", views.edit_license, name='edit_license'),
     path("license-body/delete-license/<int:license_id>", views.delete_license, name='delete_license'),
+    path("current-users/edit-users/<int:license_id>", views.edit_currentusers_license, name='edit_currentusers'),
+    path("current-users/delete-users/<int:license_id>", views.delete_currentusers_license, name='delete_currentusers'),
 
 
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Organization, Leader, License
-from .forms import OrganizationForm, LeaderForm, ContactForm, SocialForm, LicenseForm
+from .forms import OrganizationForm, LeaderForm, ContactForm, SocialForm, LicenseForm, CurrentUsersLicenseForm
 
 # ORGANIZATIONS VIEW FUNCTIONS
 # Create your views here.
@@ -264,16 +264,23 @@ def currentuser_list (request):
     
     return render(request, 'base/edit_currentusers.html', context)
 
-# def edit_currentuser(request, license_id):
-#     if request.method == 'POST':
-#         #Retrive the updated number of users from the form
-#         updated_number_of_users = request.POST.get('number_of_users')
+def edit_currentusers_license(request, license_id):
+    license = get_object_or_404(License, id=license_id)
+    if request.method =='POST':
+        form = CurrentUsersLicenseForm(request.POST, instance=license)
+        if form.is_valid():
+            form.save()
+            # Redirect to the license page
+            return redirect('current_users')
+    else:
+        form = CurrentUsersLicenseForm(instance=license)
 
-#         try:
-#             license = License.objects.get(id=license_id)
-#             license.number_of_users = updated_number_of_users
-#             license.save()
-#             return redirect('licen')
+    return render(request, 'base/edit_currentusers.html', {'form': form, 'license': license})
 
-def delete_currentuser():
-    pass
+def delete_currentusers_license(request, license_id):
+    license = get_object_or_404(License, id=license_id)
+    if request.method == "POST":
+        license.delete()
+        # Redirect
+        return redirect('current_users')
+    return render(request, 'base/delete_currentusers.html', {'license': license})

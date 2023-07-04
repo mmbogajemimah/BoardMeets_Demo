@@ -16,6 +16,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>License List</title>
+
+    <style>
+        body {
+            padding-bottom: 90px;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-color">
@@ -27,57 +33,56 @@
         </div>
     </nav>
 
-    <div class="">
-        <h1 class="text-center mt-4 mb-4 ">License List</h1>
+    <div class="container">
+        <h1 class="text-center mt-4 mb-4">License List</h1>
         <hr>
-        <a href="{% url 'index' %}" class="btn btn-outline-secondary mb-3">Back</a>
+        <div>
+            <a href="{% url 'index' %}" class="btn btn-outline-secondary mb-3">Back</a>
         <a href="{% url 'add_license' %}" class="btn btn-outline-warning mb-3">Add</a>
+        </div>
 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Index</th>
-                    <th scope="col">organizations</th>
-                    <th scope="col">License key</th>
-                    <th scope="col">Server id</th>
-                    <th scope="col">Mac Address</th>
-                    <th scope="col">License Type</th>
-                    <th scope="col">License expiry date</th>
-                    <th scope="col">Number of users</th>
-                    <th scope="col">Is active</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for license in licenses %}
-                    <tr>
-                        <th scope="row">{{ forloop.counter }}</th>
-                        <td>{{ license.organization }}</td>
-                        <td>{{ license.license_key }}</td>
-                        <td>{{ license.server_id }}</td>
-                        <td>{{ license.mac_address }}</td>
-                        <td>{{ license.license_type }}</td>
-                        <td>{{ license.license_expiry_date }}</td>
-                        <td>{{ license.number_of_users }}</td>
-                        <td>{{ license.is_active }}</td>
-                        <td>
-                            <a href="{% url 'edit_license' license.id %}" class="btn btn-outline-success btn-sm">Edit</a>
+        <div class="row">
+            {% for license in licenses %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-header text-center"><h4>{{ license.organization }}</h4></div>
+                        <div class="card-body">
+                            <p class="card-text"><strong>License Key:</strong> {{ license.license_key }}</p>
+                            <p class="card-text"><strong>Server ID:</strong> {{ license.server_id }}</p>
+                            <p class="card-text"><strong>Mac Address:</strong> {{ license.mac_address }}</p>
+                            <p class="card-text"><strong>License Type:</strong> {{ license.license_type }}</p>
+                            <p class="card-text"><strong>License Expiry Date:</strong> {{ license.license_expiry_date }}</p>
+                            <p class="card-text"><strong>Number of Users:</strong> {{ license.number_of_users }}</p>
+                            <p class="card-text"><strong>Is Active:</strong> {{ license.is_active }}</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-center">
+                            <a href="{% url 'edit_license' license.id %}" class="btn btn-outline-success btn-sm me-2">Edit</a>
                             <a href="{% url 'delete_license' license.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
-                        </td>
-                    </tr>
-                {% empty %}
-                    <tr>
-                        <td colspan="3">No licenses found.</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col">
+                    <p>No licenses found.</p>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
+    <!-- Add Bootstrap and Font Awesome JS scripts if needed -->
+    <!-- FOOTER -->
+    <footer class="home-footer text-white p-3 fixed-bottom">
+        <div class="d-flex justify-content-center align-items-center">
+            <span class="me-3" style="font-size: 18px;">
+            <i class="fas fa-user"></i> Users
+            </span>
+            <span class="ms-3" style="font-size: 18px;">
+            <i class="fas fa-users"></i> Groups
+            </span>
+        </div>
+    </footer>
 
-    
-    
+    <!-- Bootstrap Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
