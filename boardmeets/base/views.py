@@ -284,3 +284,12 @@ def delete_currentusers_license(request, license_id):
         # Redirect
         return redirect('current_users')
     return render(request, 'base/delete_currentusers.html', {'license': license})
+
+# Counting number of items in a page
+def count_organizations(request):
+    objects = Organization.objects.all()
+
+    #Count the number of objects
+    object_count = objects.count()
+
+    return render(request, 'base/home.html', {'object_count': object_count})
