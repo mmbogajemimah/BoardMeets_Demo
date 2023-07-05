@@ -2,6 +2,11 @@
 /* .navbar>.container-fluid {
     justify-content: flex-start!important;
 } */
+
+body {
+    padding-bottom: 90px;
+}
+
 .navbar-color{
     background-color: #201547!important;
 }
@@ -16,6 +21,32 @@
     width: 90px;
 }
 
+/* FOOTER */
+.home-footer {
+    background-color: #201547;
+}
+  
+
+/* HOME.html styles */
+.home-body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+.home-footer {
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
 /* CARDS */
 /* Changing left and top color of 1st and 2nd row */
 .card-color {
@@ -24,14 +55,25 @@
     top: 0;
     left: 0;
     bottom: 0;
+    border-radius: 5px 0 0 5px;
 }
 
 .card-top-color {
     height: 3px;
+    border-radius: 5px 5px 0 0;
 }
 
-/* FOOTER */
-.home-footer {
-    background-color: #201547;
+/* .info-top-border{
+    border-top: 1px #0dcaf0!important;
+} */
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .content {
+        padding-bottom: 0; /* Remove the padding on smaller screens to avoid excessive white space */
+    }
+
+    .card {
+        margin-bottom: 20px;
+    }
 }
-  
