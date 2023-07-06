@@ -35,8 +35,10 @@
     <div class="container">
         <h1 class="text-center mt-4 mb-4 ">Current Users List</h1>
         <hr>
-        <a href="{% url 'index' %}" class="btn btn-outline-secondary mb-3">Back</a>
-        <a href="{% url 'add_license' %}" class="btn btn-outline-warning mb-3">Add</a>
+        <div class="equal-width-btns">
+            <a href="{% url 'index' %}" class="btn btn-outline-secondary mb-3">Back</a>
+            <a href="{% url 'add_license' %}" class="btn btn-outline-warning mb-3">Add</a>
+        </div>
 
         <table class="table table-striped">
             <thead>
@@ -57,7 +59,7 @@
                         <td>{{ license.license_key }}</td>
                         <td>{{ license.number_of_users }}</td>
                         <td>{{ license.number_of_users }}</td>
-                        <td>
+                        <td class="equal-width-btns">
                             <a href="{% url 'edit_currentusers' license.id %}" class="btn btn-outline-success btn-sm">Edit</a>
                             <a href="{% url 'delete_currentusers' license.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
                         </td>

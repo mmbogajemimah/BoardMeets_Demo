@@ -17,33 +17,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
-    <style>
-        /* Additional styles for improved layout */
-        body {
-            padding-bottom: 70px; /* Add spacing for the footer */
-        }
-
-        .form-container {
-            margin-top: 30px;
-        }
-
-        .form-title {
-            margin-bottom: 30px;
-        }
-
-        /* Adjust input field size */
-        .form-container input[type="text"],
-        .form-container input[type="email"],
-        .form-container input[type="password"] {
-            width: 100%;
-        }
-
-        /* Center the buttons */
-        .form-container .text-center {
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
 <nav class="navbar navbar-color">
@@ -142,9 +115,9 @@
                         {% endif %}
                     </div>
 
-                    <div class="text-center mt-3 mb-4">
-                        <button type="submit" class="btn btn-outline-success btn-md">Add License</button>
-                        <a href="{% url 'license_body' %}" class="btn btn-outline-secondary btn-md">Back</a>
+                    <div class="text-center mt-3 mb-4 equal-width-btns">
+                        <button type="submit" class="btn btn-outline-success btn-md">Add</button>
+                        <a href="{% url 'license_body' %}" class="btn btn-outline-secondary btn-md">Cancel</a>
                     </div>
                 </form>
             </div>

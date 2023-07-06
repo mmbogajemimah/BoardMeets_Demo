@@ -17,11 +17,6 @@
 
     <title>License List</title>
 
-    <style>
-        body {
-            padding-bottom: 90px;
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar navbar-color">
@@ -36,9 +31,9 @@
     <div class="container">
         <h1 class="text-center mt-4 mb-4">License List</h1>
         <hr>
-        <div>
+        <div class="equal-width-btns">
             <a href="{% url 'index' %}" class="btn btn-outline-secondary mb-3">Back</a>
-        <a href="{% url 'add_license' %}" class="btn btn-outline-warning mb-3">Add</a>
+            <a href="{% url 'add_license' %}" class="btn btn-outline-warning mb-3">Add</a>
         </div>
 
         <div class="row">
@@ -55,7 +50,7 @@
                             <p class="card-text"><strong>Number of Users:</strong> {{ license.number_of_users }}</p>
                             <p class="card-text"><strong>Is Active:</strong> {{ license.is_active }}</p>
                         </div>
-                        <div class="card-footer d-flex justify-content-center">
+                        <div class="card-footer d-flex justify-content-center equal-width-btns"> 
                             <a href="{% url 'edit_license' license.id %}" class="btn btn-outline-success btn-sm me-2">Edit</a>
                             <a href="{% url 'delete_license' license.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
                         </div>

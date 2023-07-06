@@ -77,8 +77,12 @@
                 <label for="id_number_of_users" class="form-label">Number of Users:</label>
                 {{ form.number_of_users }}
             </div>
-            <button type="submit" class="btn btn-outline-success">Save</button>
-            <a href="{% url 'current_users' %}" class="btn btn-outline-secondary">Back</a>
+
+            <div class="equal-width-btns">
+                <button type="submit" class="btn btn-outline-success">Save</button>
+                <a href="{% url 'current_users' %}" class="btn btn-outline-secondary">Back</a>
+            </div>
+            
             
         </form>
     </div>

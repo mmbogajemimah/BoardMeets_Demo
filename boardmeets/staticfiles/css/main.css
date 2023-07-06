@@ -3,6 +3,15 @@
     justify-content: flex-start!important;
 } */
 
+*{
+    font-size: medium;
+}
+
+.equal-width-btns .btn{
+    flex: 0 0 auto;
+    width: 80px;
+}
+
 body {
     padding-bottom: 90px;
 }
@@ -76,4 +85,43 @@ body {
     .card {
         margin-bottom: 20px;
     }
+}
+
+/* LICENSE_LIST ADD LICENCE STYLES */
+/* Additional styles for improved layout */
+/* Additional styles for improved layout */
+
+.form-container {
+    margin-top: 30px;
+}
+
+.form-title {
+    margin-bottom: 30px;
+}
+
+/* Adjust input field size */
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"] {
+    width: 100%;
+}
+
+/* Center the buttons */
+.form-container .text-center {
+    text-align: center;
+}
+
+/* EDIT_LICENSE.HTML  */
+
+.btn-success {
+    margin-top: 20px;
+}
+.home-footer {
+    
+    color: #fff;
+    padding: 10px;
+}
+.home-footer span {
+    font-size: 18px;
+    margin-left: 10px;
 }

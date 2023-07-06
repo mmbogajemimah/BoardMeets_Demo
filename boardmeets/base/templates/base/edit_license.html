@@ -17,39 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-        body {
-            background-color: #f8f9fa;
-            padding-bottom: 90px;
-        }
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            padding-top: 100px;
-        }
-        .navbar-color {
-            background-color: #333;
-            color: #fff;
-        }
-        .navbar-brand {
-            color: #fff;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .form-label {
-            font-weight: bold;
-        }
-        .btn-success {
-            margin-top: 20px;
-        }
-        .home-footer {
-            
-            color: #fff;
-            padding: 10px;
-        }
-        .home-footer span {
-            font-size: 18px;
-            margin-left: 10px;
-        }
+       
     </style>
 </head>
 <body>
@@ -63,44 +31,47 @@
     </nav>
 
     <div class="container">
-        <h1 class="text-center mb-4">Edit License</h1>
-        <form action="" method="post">
+        <h1 class="text-center mb-4 mt-4">Edit License</h1>
+        <hr />
+        <form action="" method="post" class="text-center">
             {% csrf_token %}
-            <div class="mb-3">
-                <label for="id_organization" class="form-label">Organization:</label>
+            <div class="mb-4">
+                <label for="id_organization" class="form-label fw-bold fs-5">Organization:</label>
                 {{ form.organization }}
             </div>
-            <div class="mb-3">
-                <label for="id_license_key" class="form-label">License Key:</label>
+            <div class="mb-4">
+                <label for="id_license_key" class="form-label fw-bold fs-5">License Key:</label>
                 {{ form.license_key }}
             </div>
-            <div class="mb-3">
-                <label for="id_server_id" class="form-label">Server Id:</label>
+            <div class="mb-4">
+                <label for="id_server_id" class="form-label fw-bold fs-5">Server Id:</label>
                 {{ form.server_id }}
             </div>
-            <div class="mb-3">
-                <label for="id_mac_address" class="form-label">Mac Address:</label>
+            <div class="mb-4">
+                <label for="id_mac_address" class="form-label fw-bold fs-5">Mac Address:</label>
                 {{ form.mac_address }}
             </div>
-            <div class="mb-3">
-                <label for="id_license_type" class="form-label">License Type:</label>
+            <div class="mb-4">
+                <label for="id_license_type" class="form-label fw-bold fs-5">License Type:</label>
                 {{ form.license_type }}
             </div>
-            <div class="mb-3">
-                <label for="id_license_expiry_date" class="form-label">License Expiry Date:</label>
+            <div class="mb-4">
+                <label for="id_license_expiry_date" class="form-label fw-bold fs-5">License Expiry Date:</label>
                 {{ form.license_expiry_date }}
             </div>
-            <div class="mb-3">
-                <label for="id_number_of_users" class="form-label">Number of Users:</label>
+            <div class="mb-4">
+                <label for="id_number_of_users" class="form-label fw-bold fs-5">Number of Users:</label>
                 {{ form.number_of_users }}
             </div>
-            <div class="mb-3">
-                <label for="id_is_active" class="form-label">Is Active:</label>
+            <div class="mb-4">
+                <label for="id_is_active" class="form-label fw-bold fs-5">Is Active:</label>
                 {{ form.is_active }}
             </div>
-            
-            <button type="submit" class="btn btn-outline-success">Save</button>
-            <a href="{% url 'license_body' %}" class="btn btn-outline-secondary">Back</a>
+
+            <div class="equal-width-btns">
+                <button type="submit" class="btn btn-outline-success fs-6">Save</button>
+                <a href="{% url 'license_body' %}" class="btn btn-outline-secondary fs-6">Back</a>
+            </div>
             
         </form>
     </div>
@@ -108,10 +79,10 @@
      <!-- FOOTER -->
     <footer class="home-footer text-white p-3 fixed-bottom">
         <div class="d-flex justify-content-center align-items-center">
-            <span>
+            <span class="me-3" style="font-size: 18px;">
                 <i class="fas fa-user"></i> Users
             </span>
-            <span>
+            <span class="ms-3" style="font-size: 18px;">
                 <i class="fas fa-users"></i> Groups
             </span>
         </div>
